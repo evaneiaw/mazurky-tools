@@ -1,0 +1,182 @@
+body {
+  background: #f0f0f0;
+}
+
+#app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px;
+}
+
+.cm-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
+}
+
+.cm-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #2c2c2c;
+}
+
+.cm-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cm-row-wide {
+  gap: 15px;
+}
+
+.cm-field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-start;
+}
+
+.cm-field > span,
+.cm-check > span {
+  font-size: 10px;
+  color: #4a4a4a;
+  white-space: nowrap;
+}
+
+.cm-input {
+  width: 52px;
+  height: 20px;
+  border: 1px solid #a8a8a8;
+  border-radius: 0;
+  padding: 0 4px;
+  font-size: 12px;
+  font-family: inherit;
+  color: #2c2c2c;
+  background: #ffffff;
+}
+
+.cm-input:disabled {
+  background: #e4e4e4;
+  color: #9a9a9a;
+}
+
+.cm-check {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.cm-check input {
+  margin: 0;
+}
+
+.cm-button {
+  width: 80px;
+  height: 20px;
+  border: 1px solid #a8a8a8;
+  border-radius: 0;
+  background: #f0f0f0;
+  font-size: 12px;
+  font-family: inherit;
+  color: #2c2c2c;
+  cursor: pointer;
+}
+
+.cm-button:hover {
+  background: #e2e2e2;
+}
+
+.cm-button:active {
+  background: #d5d5d5;
+}
+
+.cm-separator {
+  height: 1px;
+  background: #b5b5b5;
+  margin: 12px 0;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-top: 1px solid #d9d9d9;
+  background: #f7f7f7;
+}
+
+.status-text {
+  flex: 1;
+  text-align: right;
+  font-size: 11px;
+  color: #707070;
+}
+
+.status-text.ok {
+  color: #12805c;
+}
+
+.status-text.err {
+  color: #d7373f;
+}
+
+.cm-dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 14px 10px;
+  border: 2px dashed #b5b5b5;
+  border-radius: 4px;
+  background: #fafafa;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  min-height: 60px;
+}
+
+.cm-dropzone:hover {
+  border-color: #888;
+  background: #f0f0f0;
+}
+
+.cm-dropzone.dragover {
+  border-color: #1a73e8;
+  background: #e8f0fe;
+}
+
+.cm-dropzone-icon {
+  width: 24px;
+  height: 24px;
+  color: #707070;
+}
+
+.cm-dropzone.dragover .cm-dropzone-icon {
+  color: #1a73e8;
+}
+
+.cm-dropzone-text {
+  font-size: 11px;
+  color: #707070;
+  text-align: center;
+}
+
+.cm-file-badge {
+  font-size: 10px;
+  color: #12805c;
+  font-weight: 600;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

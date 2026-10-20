@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Gerar Layout</title>
+  <link rel="stylesheet" href="css/gerarLayout.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <h1 class="title">Gerar Layout</h1>
+      <button id="btnFechar" class="btn-close" title="Fechar">×</button>
+    </header>
+
+    <main class="content">
+      <div class="fieldset">
+        <label class="fieldset-label">Arquivo PDF da prévia</label>
+        <div id="dropzone" class="dropzone">
+          <span class="dropzone-icon">📄</span>
+          <span class="dropzone-text">Arraste o PDF para cá<br />ou clique para procurar</span>
+        </div>
+        <input id="fileInput" type="file" accept=".pdf,application/pdf" hidden />
+        <span id="arquivoNome" class="muted"></span>
+      </div>
+
+      <div class="fieldset">
+        <label class="fieldset-label">Informações extraídas</label>
+        <div id="resultados" class="resultados">
+          <span class="muted">Nenhum PDF carregado.</span>
+        </div>
+      </div>
+
+      <div class="fieldset">
+        <button id="btnDebug" class="button">Ver coordenadas (debug)</button>
+        <pre id="debugOut" class="debug hidden"></pre>
+      </div>
+    </main>
+
+    <footer id="status" class="status">
+      <span id="statusText">Carregando...</span>
+    </footer>
+
+    <div class="actions">
+      <button id="btnExecutar" class="button primary">Executar</button>
+    </div>
+  </div>
+
+  <script src="../../js/CSInterface.js"></script>
+  <script src="js/gerarLayout.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Centerline</title>
+  <link rel="stylesheet" href="css/centerline.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <h1 class="title">Centerline</h1>
+      <button id="btnFechar" class="btn-close" title="Fechar">×</button>
+    </header>
+
+    <main class="content">
+      <div class="fieldset">
+        <label class="fieldset-label">Alinhamento</label>
+        <label class="check"><input type="radio" name="alinhamento" value="base" checked /> Alinhar à Base</label>
+        <label class="check"><input type="radio" name="alinhamento" value="topo" /> Alinhar ao Topo</label>
+        <label class="check"><input type="radio" name="alinhamento" value="esquerda" /> Alinhar à Esquerda</label>
+        <label class="check"><input type="radio" name="alinhamento" value="direita" /> Alinhar à Direita</label>
+      </div>
+
+      <div class="fieldset">
+        <label class="fieldset-label">Arquivos abertos</label>
+        <div id="docList" class="doc-list">
+          <span class="doc-loading">Carregando documentos...</span>
+        </div>
+        <div class="btn-row">
+          <button id="btnMarcarTodos" class="button small">Selecionar Todos</button>
+          <button id="btnDesmarcarTodos" class="button small">Desmarcar</button>
+        </div>
+      </div>
+
+      <div class="fieldset">
+        <label class="check"><input id="addCenterCL" type="checkbox" /> Adicionar CL Central (3 Retângulos)</label>
+        <label class="check"><input id="todosArtboards" type="checkbox" checked /> Aplicar em todas as pranchetas</label>
+      </div>
+
+      <div class="fieldset">
+        <label class="fieldset-label" for="offset">Deslocamento (mm)</label>
+        <input id="offset" class="input" type="number" step="any" value="8" />
+      </div>
+    </main>
+
+    <footer id="status" class="status">
+      <span id="statusText">Pronto.</span>
+    </footer>
+
+    <div class="actions">
+      <button id="btnExecutar" class="button primary">Executar</button>
+    </div>
+  </div>
+
+  <script src="../../js/CSInterface.js"></script>
+  <script src="js/centerline.js"></script>
+</body>
+</html>

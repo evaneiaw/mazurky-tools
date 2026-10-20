@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Cotas</title>
+  <link rel="stylesheet" href="css/cotas.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <h1 class="title">Cotas</h1>
+      <button id="btnFechar" class="btn-close" title="Fechar">×</button>
+    </header>
+
+    <main class="content">
+      <div class="card-text">Selecione os objetos antes de executar.</div>
+
+      <div class="fieldset">
+        <label class="fieldset-label">Selecionar Posição das Cotas</label>
+        <div class="row">
+          <label class="check"><input id="cima" type="checkbox" /> Cima</label>
+          <label class="check"><input id="direita" type="checkbox" checked /> Direita</label>
+          <label class="check"><input id="baixo" type="checkbox" checked /> Baixo</label>
+          <label class="check"><input id="esquerda" type="checkbox" /> Esquerda</label>
+        </div>
+        <label class="check"><input id="selecionarTudo" type="checkbox" /> Selecionar Tudo</label>
+      </div>
+
+      <div class="fieldset">
+        <label class="fieldset-label">Opções</label>
+        <label class="check"><input id="unidades" type="checkbox" checked /> Incluir Unidades</label>
+        <label class="check"><input id="distancia" type="checkbox" /> Distância entre objetos</label>
+        <label class="check"><input id="cotaUnica" type="checkbox" /> Cota Única (todos os objetos como 1 cota)</label>
+        <div class="row">
+          <div class="field small">
+            <label class="fieldset-label" for="fonte">Tamanho da Fonte</label>
+            <input id="fonte" class="input" type="number" step="any" value="20" />
+          </div>
+          <div class="field small">
+            <label class="fieldset-label" for="traco">Espessura do Traço (mm)</label>
+            <input id="traco" class="input" type="number" step="0.1" value="0.5" />
+          </div>
+          <div class="field small">
+            <label class="fieldset-label" for="distanciaCotas">Distância (mm)</label>
+            <input id="distanciaCotas" class="input" type="number" step="0.5" value="5" />
+          </div>
+          <div class="field small">
+            <label class="fieldset-label" for="offsetTexto">Desloc. Texto (mm)</label>
+            <input id="offsetTexto" class="input" type="number" step="0.5" value="0" />
+          </div>
+        </div>
+        <label class="check"><input id="ticket" type="checkbox" /> Ticket (2 casas decimais)</label>
+      </div>
+
+      <div class="fieldset">
+        <label class="fieldset-label" for="cor">Cor do Traço</label>
+        <select id="cor" class="input">
+          <option value="Preto">Preto</option>
+          <option value="Branco">Branco</option>
+          <option value="Verde" selected>Verde</option>
+          <option value="Azul">Azul</option>
+          <option value="Amarelo">Amarelo</option>
+          <option value="Magenta">Magenta</option>
+          <option value="Laranja">Laranja</option>
+          <option value="Ciano">Ciano</option>
+        </select>
+      </div>
+
+      <div class="fieldset">
+        <label class="fieldset-label">Cor (CMYK)</label>
+        <div class="row">
+          <div class="field small">
+            <label class="fieldset-label" for="cyan">C</label>
+            <input id="cyan" class="input" type="number" min="0" max="999" value="100" />
+          </div>
+          <div class="field small">
+            <label class="fieldset-label" for="magenta">M</label>
+            <input id="magenta" class="input" type="number" min="0" max="999" value="0" />
+          </div>
+          <div class="field small">
+            <label class="fieldset-label" for="yellow">Y</label>
+            <input id="yellow" class="input" type="number" min="0" max="999" value="100" />
+          </div>
+          <div class="field small">
+            <label class="fieldset-label" for="black">K</label>
+            <input id="black" class="input" type="number" min="0" max="999" value="0" />
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer id="status" class="status">
+      <span id="statusText">Pronto.</span>
+    </footer>
+
+    <div class="actions">
+      <div class="actions-left">
+        <button id="btnRestaurarPadrao" class="button secondary">Restaurar padrão</button>
+        <button id="btnDefinirPadrao" class="button secondary">Definir padrão</button>
+      </div>
+      <button id="btnCancelar" class="button danger">Cancelar</button>
+      <button id="btnExecutar" class="button primary">Executar</button>
+    </div>
+
+    <div id="modalEdicao" class="modal hidden">
+      <div class="modal-box">
+        <p id="modalTexto"></p>
+        <div class="modal-actions">
+          <button id="btnModalNao" class="button secondary">Não</button>
+          <button id="btnModalSim" class="button primary">Sim</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../js/CSInterface.js"></script>
+  <script src="js/cotas.js"></script>
+</body>
+</html>

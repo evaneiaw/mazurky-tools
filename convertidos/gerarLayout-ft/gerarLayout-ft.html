@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Gerar Layout - FT</title>
+  <link rel="stylesheet" href="css/gerarLayout-ft.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <h1 class="title">Gerar Layout</h1>
+      <button id="btnFechar" class="btn-close" title="Fechar">×</button>
+    </header>
+
+    <section id="telaLoading" class="loading-screen">
+      <div class="loading-spinner"></div>
+      <span id="loadingTexto">Carregando...</span>
+    </section>
+
+    <main id="telaCampos" class="content hidden">
+      <div class="fieldset">
+        <label class="fieldset-label">Ficha Técnica (FT)</label>
+        <div class="ft-row">
+          <input id="ftNumero" class="input" readonly />
+          <button id="btnBuscarFT" class="button">Atualizar base</button>
+        </div>
+        <span id="arquivoNome" class="muted"></span>
+      </div>
+
+      <div id="itemFieldset" class="fieldset hidden">
+        <label class="fieldset-label">Layout / Item</label>
+        <div id="itemRadios" class="orientacao"></div>
+      </div>
+
+      <div class="fieldset">
+        <label class="fieldset-label">Orientação</label>
+        <div class="orientacao">
+          <label class="radio"><input type="radio" name="orientacao" value="paisagem" checked /> Paisagem (A4)</label>
+          <label class="radio"><input type="radio" name="orientacao" value="retrato" /> Retrato (A4)</label>
+        </div>
+      </div>
+
+      <div class="fieldset">
+        <label class="fieldset-label">Informações da FT</label>
+        <span class="muted">Marque a medida interna que vai para o layout.</span>
+        <div id="resultados" class="resultados">
+          <span class="muted">Nenhuma FT carregada.</span>
+        </div>
+      </div>
+    </main>
+
+    <footer id="status" class="status">
+      <span id="statusText">Carregando...</span>
+    </footer>
+
+    <div id="acoes" class="actions">
+      <button id="btnExecutar" class="button primary">Executar</button>
+    </div>
+  </div>
+
+  <script src="../../js/CSInterface.js"></script>
+  <script src="js/gerarLayout-ft.js"></script>
+</body>
+</html>

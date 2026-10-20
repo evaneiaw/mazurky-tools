@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Salvar PDF Várias Páginas - Mazurky</title>
+  <link rel="stylesheet" href="css/salvarpdf.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <h1 class="title">Salvar PDF Várias Páginas</h1>
+      <button id="btnFechar" class="btn-close" title="Fechar">×</button>
+    </header>
+
+    <main class="content">
+      <div class="fieldset" id="fieldsetDocs" style="display:none;">
+        <label class="fieldset-label">Documentos abertos (selecione quais processar):</label>
+        <div id="docChecks" class="check-grid"></div>
+        <div class="btn-row">
+          <button id="btnMarcarTodos" class="button secondary">Selecionar Todos</button>
+          <button id="btnDesmarcarTodos" class="button secondary">Desmarcar</button>
+        </div>
+      </div>
+
+      <div class="fieldset">
+        <label class="fieldset-label">Pasta de destino</label>
+        <label class="check"><input type="radio" name="pasta" value="mesma" checked /> Mesma pasta do arquivo de origem</label>
+        <label class="check"><input type="radio" name="pasta" value="escolher" /> Escolher pasta...</label>
+        <input id="inputPasta" class="input" type="text" value="" disabled />
+      </div>
+
+      <div class="fieldset">
+        <label class="fieldset-label">Opções do PDF</label>
+        <div class="field">
+          <label for="ddPreset">Preset PDF</label>
+          <select id="ddPreset" class="select">
+            <option value="0" selected>[Padrão Illustrator]</option>
+          </select>
+        </div>
+        <label class="check"><input id="chkView" type="checkbox" /> Abrir PDF após salvar</label>
+        <label class="check"><input id="chkSalvarAntes" type="checkbox" checked /> Salvar arquivo antes de gerar PDF</label>
+        <label class="check"><input id="chkPaginaPorArquivo" type="checkbox" /> Uma página por arquivo</label>
+        <label class="check"><input id="chkArtboardUnica" type="checkbox" /> Selecione a Artboard</label>
+        <div class="field" id="fieldArtboardUnica" style="display:none;">
+          <label for="ddArtboard">Prancheta</label>
+          <select id="ddArtboard" class="select"></select>
+        </div>
+        <label class="check"><input id="chkOcultarFaca" type="checkbox" /> Ocultar camada 'Faca' no PDF</label>
+      </div>
+
+      <div class="fieldset">
+        <div class="field">
+          <label for="ddNome">Nome do arquivo</label>
+          <select id="ddNome" class="select" disabled>
+            <option value="0" selected>nome_pg1, nome_pg2...</option>
+            <option value="1">nome_nomedoArtboard</option>
+          </select>
+        </div>
+      </div>
+    </main>
+
+    <footer id="status" class="status">
+      <span id="statusText">Pronto.</span>
+    </footer>
+
+    <div class="actions">
+      <button id="btnExecutar" class="button primary">Executar</button>
+    </div>
+  </div>
+
+  <script src="../../js/CSInterface.js"></script>
+  <script src="js/salvarpdf.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Faca para Plotter - Mazurky</title>
+  <link rel="stylesheet" href="css/facaplotter.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <h1 class="title">Faca para Plotter</h1>
+      <button id="btnFechar" class="btn-close" title="Fechar">×</button>
+    </header>
+
+    <main class="content">
+      <div class="fieldset">
+        <label class="fieldset-label">Espelhamento</label>
+        <label class="check"><input type="radio" name="espelho" value="H" checked /> Horizontal (eixo horizontal - topo/base)</label>
+        <label class="check"><input type="radio" name="espelho" value="V" /> Vertical (eixo vertical - esquerda/direita)</label>
+        <label class="check"><input type="radio" name="espelho" value="N" /> Não espelhar</label>
+      </div>
+
+      <div class="fieldset">
+        <label class="fieldset-label">Modo</label>
+        <label class="check"><input type="radio" name="modo" value="0" checked /> Documento ativo apenas</label>
+        <label class="check"><input type="radio" name="modo" value="1" /> Selecionar documentos...</label>
+        <label class="check"><input type="radio" name="modo" value="2" /> Todos os documentos abertos</label>
+      </div>
+
+      <div class="fieldset" id="fieldsetDocs" style="display:none;">
+        <label class="fieldset-label">Documentos abertos:</label>
+        <div id="docChecks" class="check-grid"></div>
+      </div>
+
+      <div class="fieldset">
+        <label class="fieldset-label">Opções</label>
+        <label class="check"><input id="chkPorArtboard" type="checkbox" checked /> Gerar 1 PDF por prancheta</label>
+        <div id="fieldArtboard" class="field-row" style="display:none;">
+          <label class="field-label">Prancheta:</label>
+          <select id="selectArtboard" class="field-select"></select>
+        </div>
+        <label class="check"><input id="chkReabrir" type="checkbox" checked /> Reabrir originais ao final</label>
+        <label class="check"><input id="chkSalvarAntes" type="checkbox" checked /> Salvar antes de modificar</label>
+      </div>
+    </main>
+
+    <div id="progressBox" class="progress-box" style="display:none;">
+      <div class="progress-track"><div id="progressFill" class="progress-fill"></div></div>
+      <div id="progressLabel" class="progress-label">Preparando</div>
+    </div>
+
+    <footer id="status" class="status">
+      <span id="statusText">Pronto.</span>
+    </footer>
+
+    <div class="actions">
+      <button id="btnExecutar" class="button primary">Executar</button>
+    </div>
+  </div>
+
+  <script src="../../js/CSInterface.js"></script>
+  <script src="js/facaplotter.js"></script>
+</body>
+</html>

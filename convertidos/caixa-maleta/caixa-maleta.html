@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Caixa Maleta - Mazurky</title>
+  <link rel="stylesheet" href="../../css/styles.css" />
+  <link rel="stylesheet" href="css/caixa-maleta.css" />
+</head>
+<body>
+  <div id="app">
+    <main id="content" class="content">
+      <div class="cm-section">
+        <span class="cm-label">Largura das Colunas (mm):</span>
+        <div class="cm-row">
+          <div class="cm-field"><span>Coluna 1</span><input id="coluna1" class="cm-input" value="50" type="number" step="any" /></div>
+          <div class="cm-field"><span>Coluna 2</span><input id="coluna2" class="cm-input" value="30" type="number" step="any" /></div>
+          <div class="cm-field"><span>Coluna 3</span><input id="coluna3" class="cm-input" value="30" type="number" step="any" /></div>
+          <div class="cm-field"><span>Coluna 4</span><input id="coluna4" class="cm-input" value="50" type="number" step="any" /></div>
+          <div class="cm-field"><span>Aba de Cola</span><input id="abaCola" class="cm-input" value="20" type="number" step="any" /></div>
+        </div>
+      </div>
+
+      <div class="cm-separator"></div>
+
+      <div class="cm-section">
+        <span class="cm-label">Altura das Linhas (mm):</span>
+        <div class="cm-row">
+          <div class="cm-field"><span>Linha 1</span><input id="linha1" class="cm-input" value="30" type="number" step="any" /></div>
+          <div class="cm-field"><span>Linha 2</span><input id="linha2" class="cm-input" value="40" type="number" step="any" /></div>
+          <div class="cm-field"><span>Linha 3</span><input id="linha3" class="cm-input" value="30" type="number" step="any" /></div>
+        </div>
+      </div>
+
+      <div class="cm-separator"></div>
+
+      <div class="cm-section">
+        <span class="cm-label">Configurações das Cotas:</span>
+        <div class="cm-row">
+          <div class="cm-field"><span>Offset (mm)</span><input id="offset" class="cm-input" value="3" type="number" step="any" /></div>
+          <div class="cm-field"><span>Espessura (mm)</span><input id="espessura" class="cm-input" value="0.5" type="number" step="any" /></div>
+          <div class="cm-field"><span>Tamanho Texto (pt)</span><input id="tamanhoTexto" class="cm-input" value="7" type="number" step="any" /></div>
+          <div class="cm-field"><span>Distância Texto (pt)</span><input id="distanciaTexto" class="cm-input" value="0" type="number" step="any" /></div>
+          <div class="cm-field"><span>Tamanho Extensões (mm)</span><input id="extensaoTotal" class="cm-input" value="3" type="number" step="any" /></div>
+        </div>
+      </div>
+
+      <div class="cm-separator"></div>
+
+      <div class="cm-section">
+        <span class="cm-label">Importar PDF:</span>
+        <div id="dropZone" class="cm-dropzone">
+          <svg class="cm-dropzone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+          </svg>
+          <span class="cm-dropzone-text">Arraste um PDF aqui ou clique para selecionar</span>
+          <input id="pdfFileInput" type="file" accept=".pdf" style="display:none" />
+        </div>
+      </div>
+
+      <div class="cm-separator"></div>
+
+      <div class="cm-section">
+        <span class="cm-label">Configurações Adicionais:</span>
+        <div class="cm-row cm-row-wide">
+          <label class="cm-check"><span>Cotas</span><input id="cotas" type="checkbox" checked /></label>
+          <label class="cm-check"><span>Orelha no Comprimento</span><input id="orelhaComprimento" type="checkbox" /></label>
+          <label class="cm-check"><span>Retângulo Invisível</span><input id="retanguloInvisivel" type="checkbox" checked /></label>
+          <label class="cm-check"><span>Mostrar 'mm'</span><input id="mostrarMm" type="checkbox" checked /></label>
+          <label class="cm-check"><span>Meia Caixa</span><input id="meiaCaixa" type="checkbox" /></label>
+          <div class="cm-field"><span>Slotter (mm)</span><input id="slotter" class="cm-input" value="0" type="number" step="any" /></div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="actions">
+      <button id="btnGerar" class="button primary">OK</button>
+      <button id="btnFechar" class="button">Fechar</button>
+      <span id="statusText" class="status-text">Aguardando...</span>
+    </footer>
+  </div>
+
+  <script src="../../js/CSInterface.js"></script>
+  <script src="js/caixa-maleta.js"></script>
+</body>
+</html>

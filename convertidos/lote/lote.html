@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Lote Mazurky</title>
+  <link rel="stylesheet" href="css/lote.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <h1 class="title">Lote Mazurky</h1>
+      <button id="btnFechar" class="btn-close" title="Fechar">×</button>
+    </header>
+
+    <main class="content">
+      <div class="fieldset ft-info">
+        <span class="badge">FT: <strong id="ftInfo">—</strong></span>
+        <span id="refInfo" class="muted"></span>
+      </div>
+
+      <div class="fieldset">
+        <label class="fieldset-label">Período</label>
+        <div class="row periodo-row">
+          <input id="dataIni" class="input" type="date" />
+          <span class="muted">a</span>
+          <input id="dataFim" class="input" type="date" />
+          <button id="btnBuscar" class="button secondary" title="Atualizar lista">↻</button>
+        </div>
+      </div>
+
+      <div class="fieldset">
+        <label class="fieldset-label">OFs encontradas</label>
+        <div id="listaOF" class="lista-of">
+          <p class="lista-vazia">Carregando...</p>
+        </div>
+      </div>
+
+      <div class="fieldset">
+        <label class="fieldset-label" for="lote">Número do lote</label>
+        <input id="lote" class="input lote-lg" type="text" inputmode="numeric" placeholder="000.000" />
+      </div>
+
+      <div class="fieldset">
+        <button id="btnExecutar" class="button primary executar" disabled>Executar</button>
+      </div>
+    </main>
+
+    <footer id="status" class="status">
+      <span id="statusText">Pronto.</span>
+    </footer>
+
+    <div id="splash" class="splash hidden">
+      <div class="splash-card">
+        <span class="splash-icon">!</span>
+        <p id="splashMsg"></p>
+        <button id="splashBtn" class="button primary">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../js/CSInterface.js"></script>
+  <script src="js/lote.js"></script>
+</body>
+</html>

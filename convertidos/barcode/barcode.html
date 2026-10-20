@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Código de Barras</title>
+  <link rel="stylesheet" href="css/barcode.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <h1 class="title">Código de Barras</h1>
+      <button id="btnFechar" class="btn-close" title="Fechar">&times;</button>
+    </header>
+
+    <main class="content">
+      <div class="preview">
+        <canvas id="previewCanvas" width="560" height="150"></canvas>
+        <span id="previewInfo" class="muted">&mdash;</span>
+      </div>
+
+      <div class="fieldset">
+        <label class="fieldset-label" for="selectSimbolo">Símbolo</label>
+        <select id="selectSimbolo" class="input">
+          <option value="ean13">EAN-13</option>
+          <option value="ean8">EAN-8</option>
+          <option value="upca">UPC-A</option>
+          <option value="code128">Code 128</option>
+          <option value="gs1128">GS1-128 (GTIN + lote + validade)</option>
+          <option value="itf14">ITF-14 (com moldura)</option>
+          <option value="code39">Code 39</option>
+        </select>
+      </div>
+
+      <div class="fieldset" id="grupoDigitos">
+        <label class="fieldset-label" for="inputNumero">Número</label>
+        <input id="inputNumero" class="input" type="text" inputmode="numeric" autocomplete="off" placeholder="590123412345" />
+        <span class="muted" id="dicaNumero"></span>
+      </div>
+
+      <div class="fieldset hidden" id="grupoTexto">
+        <label class="fieldset-label" for="inputTexto">Texto</label>
+        <input id="inputTexto" class="input" type="text" autocomplete="off" placeholder="MAZURKY-2026" />
+        <span class="muted" id="dicaTexto"></span>
+      </div>
+
+      <div class="fieldset hidden" id="grupoGS1">
+        <label class="fieldset-label">Dados GS1-128</label>
+        <div class="row">
+          <div class="field grow">
+            <span>GTIN-14</span>
+            <input id="inputGtin" class="input" type="text" inputmode="numeric" autocomplete="off" placeholder="1234567890123" />
+          </div>
+          <div class="field">
+            <span>Lote</span>
+            <input id="inputLote" class="input" type="text" autocomplete="off" placeholder="ABC123" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="field grow">
+            <span>Validade (DD/MM/AAAA)</span>
+            <input id="inputValidade" class="input" type="text" inputmode="numeric" autocomplete="off" placeholder="31/12/2026" />
+          </div>
+        </div>
+        <span class="muted" id="dicaGS1">AI (01) GTIN, AI (10) lote e AI (17) validade. Os dois últimos são opcionais.</span>
+      </div>
+
+      <div class="fieldset">
+        <label class="fieldset-label">Tamanho</label>
+        <div class="row">
+          <div class="field hidden" id="campoMagnificacao">
+            <span>Magnifica&ccedil;&atilde;o (%)</span>
+            <input id="inputMagnificacao" class="input" type="number" min="80" max="200" step="1" value="100" />
+          </div>
+          <div class="field" id="campoModulo">
+            <span>Largura do m&oacute;dulo (mm)</span>
+            <input id="inputModulo" class="input" type="number" min="0.05" max="5" step="0.01" value="0.33" />
+          </div>
+          <div class="field">
+            <span>Altura das barras (mm)</span>
+            <input id="inputAltura" class="input" type="number" min="2" max="200" step="0.1" value="22.85" />
+          </div>
+        </div>
+        <span class="muted" id="dicaTamanho"></span>
+      </div>
+
+      <div class="fieldset hidden" id="campoGuardas">
+        <label class="fieldset-label" for="selectGuardas">Barras de guarda</label>
+        <select id="selectGuardas" class="input">
+          <option value="longas" selected>Longas &mdash; n&uacute;mero entre as barras</option>
+          <option value="curtas">Curtas &mdash; todas as barras iguais</option>
+        </select>
+        <span class="muted">S&oacute; para EAN/UPC. Nas longas o n&uacute;mero fica na faixa inferior, entre as guardas.</span>
+      </div>
+
+      <div class="fieldset">
+        <label class="fieldset-label">N&uacute;mero leg&iacute;vel embaixo</label>
+        <div class="row">
+          <label class="check"><input id="chkTexto" type="checkbox" checked /> Mostrar</label>
+          <div class="field">
+            <span>Tamanho (pt)</span>
+            <input id="inputTamTexto" class="input" type="number" min="4" max="72" step="0.5" value="8" />
+          </div>
+        </div>
+        <span class="muted">Fonte Arial, edit&aacute;vel no Illustrator.</span>
+      </div>
+
+      <div class="fieldset">
+        <label class="fieldset-label">Op&ccedil;&otilde;es</label>
+        <div class="row">
+          <div class="field">
+            <span>Cor</span>
+            <select id="selectCor" class="input">
+              <option value="#000000" selected>Preto</option>
+              <option value="#d7373f">Vermelho</option>
+              <option value="#1473e6">Azul</option>
+              <option value="#12805c">Verde</option>
+            </select>
+          </div>
+          <label class="check"><input id="chkLimpar" type="checkbox" /> Apagar c&oacute;digos anteriores</label>
+        </div>
+        <span class="muted">Gerado no centro da prancheta ativa, na camada <b>BARRAS</b>. A zona de sil&ecirc;ncio padr&atilde;o do s&iacute;mbolo est&aacute; inclu&iacute;da na largura total.</span>
+      </div>
+    </main>
+
+    <footer id="status" class="status">
+      <span id="statusText">Pronto.</span>
+    </footer>
+
+    <div class="actions">
+      <button id="btnExecutar" class="button primary">Gerar no Illustrator</button>
+    </div>
+  </div>
+
+  <script src="../../js/CSInterface.js"></script>
+  <script src="js/barcode.js"></script>
+</body>
+</html>

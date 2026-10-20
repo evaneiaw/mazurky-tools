@@ -1,0 +1,22 @@
+
+Cliente: 1
+Referencia: 2
+CodRef: 3
+Modelo: 5
+Papelao: 6
+Resina: 00
+Area: 00
+MedidasInternas:7
+Orelha: 00
+MedInternCV: 8
+Dimensoes: 00
+Chapa: 9
+OndaVirada: 00
+FI: 00
+Cliche: 00
+LocalCliche: 00
+QtPecas: 00
+Forma: 00
+LocalForma: 00
+Cores: 10
+FluxoPadraoMaq: 11

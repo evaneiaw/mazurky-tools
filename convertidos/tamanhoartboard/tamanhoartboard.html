@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Igualar Tamanho Artboards</title>
+  <link rel="stylesheet" href="css/tamanhoartboard.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <h1 class="title">Igualar Tamanho Artboards</h1>
+      <button id="btnFechar" class="btn-close" title="Fechar">×</button>
+    </header>
+
+    <main class="content">
+      <p class="card-text">Iguala o tamanho de todas as artboards ao da artboard ativa.</p>
+
+      <div class="fieldset">
+        <label class="check"><input id="chkReorganizar" type="checkbox" checked /> Reorganizar (não sobrepor)</label>
+        <div class="row">
+          <div class="field"><span>Colunas</span><input id="colunas" class="input opts-num" type="number" min="1" step="1" value="4" /></div>
+          <div class="field"><span>Espaçamento (mm)</span><input id="espacamento" class="input opts-num" type="number" min="0" step="1" value="20" /></div>
+        </div>
+        <span id="optsInfo" class="muted"></span>
+      </div>
+
+      <div id="preview" class="preview"></div>
+    </main>
+
+    <footer id="status" class="status">
+      <span id="statusText">Pronto.</span>
+    </footer>
+
+    <div class="actions">
+      <button id="btnExecutar" class="button primary">Executar</button>
+    </div>
+  </div>
+
+  <script src="../../js/CSInterface.js"></script>
+  <script src="js/tamanhoartboard.js"></script>
+</body>
+</html>

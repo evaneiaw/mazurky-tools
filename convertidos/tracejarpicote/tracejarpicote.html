@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Tracejar Linha (Picote)</title>
+  <link rel="stylesheet" href="css/tracejarpicote.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <h1 class="title">Tracejar Linha (Picote)</h1>
+      <button id="btnFechar" class="btn-close" title="Fechar">×</button>
+    </header>
+
+    <main class="content">
+      <div class="card-text">Selecione os objetos antes de executar.</div>
+
+      <div class="fieldset">
+        <label class="fieldset-label">Configurar Tracejado Real</label>
+        <div class="row">
+          <div class="field small">
+            <label class="fieldset-label" for="dash">Tamanho do traço (mm)</label>
+            <input id="dash" class="input" type="number" step="any" value="5" />
+          </div>
+          <div class="field small">
+            <label class="fieldset-label" for="gap">Espaço entre traços (mm)</label>
+            <input id="gap" class="input" type="number" step="any" value="2" />
+          </div>
+        </div>
+        <label class="check"><input id="corte" type="checkbox" /> Modo Corte/Vinco</label>
+      </div>
+    </main>
+
+    <footer id="status" class="status">
+      <span id="statusText">Pronto.</span>
+    </footer>
+
+    <div class="actions">
+      <button id="btnExecutar" class="button primary">Executar</button>
+    </div>
+  </div>
+
+  <script src="../../js/CSInterface.js"></script>
+  <script src="js/tracejarpicote.js"></script>
+</body>
+</html>

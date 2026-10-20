@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>INFO - Mazurky</title>
+  <link rel="stylesheet" href="css/info.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <h1 class="title">INFO</h1>
+      <button id="btnFechar" class="btn-close" title="Fechar">×</button>
+    </header>
+
+    <main class="content">
+      <div class="fieldset">
+        <label class="fieldset-label" for="margem">Margem (mm)</label>
+        <div class="margem-row">
+          <input id="margem" class="input" type="number" step="any" value="7.0" />
+          <span id="rasterInfo" class="raster-info" title="Rasterizador detectado no documento">Raster: —</span>
+        </div>
+      </div>
+
+      <div class="fieldset">
+        <label class="fieldset-label" for="escala">Tamanho do bloco (%)</label>
+        <input id="escala" class="input" type="number" step="5" min="50" max="300" value="100" title="Escala o conjunto todo (ícone + texto + espaço)" />
+      </div>
+
+      <div class="fieldset">
+        <label class="fieldset-label" for="espessura">Espessura do traço do ícone (mm)</label>
+        <input id="espessura" class="input" type="number" step="0.05" min="0.05" max="5" value="0.3" title="Traços do ícone — fixo, não acompanha a escala" />
+      </div>
+
+      <div class="fieldset">
+        <label class="fieldset-label">Posição</label>
+        <div class="posicao-map">
+          <label class="posicao-cell pos-TL"><input type="radio" name="posicao" value="TL" /><span>Superior Esquerdo</span></label>
+          <label class="posicao-cell pos-TR"><input type="radio" name="posicao" value="TR" /><span>Superior Direito</span></label>
+          <label class="posicao-cell pos-BL"><input type="radio" name="posicao" value="BL" checked /><span>Inferior Esquerdo</span></label>
+          <label class="posicao-cell pos-BR"><input type="radio" name="posicao" value="BR" /><span>Inferior Direito</span></label>
+        </div>
+      </div>
+
+      <div class="fieldset">
+        <label class="fieldset-label">Rotação</label>
+        <label class="check"><input type="radio" name="rotacao" value="normal" checked /> Normal</label>
+        <label class="check"><input type="radio" name="rotacao" value="direita" /> Direita (-90°)</label>
+        <label class="check"><input type="radio" name="rotacao" value="esquerda" /> Esquerda (90°)</label>
+      </div>
+
+      <div class="fieldset">
+        <label class="fieldset-label">Sentido da onda</label>
+        <div class="onda-options">
+          <label class="check onda-item">
+            <input type="radio" name="sentido" value="H" checked />
+            <img class="onda-icon" src="convertidos/info/onda_h.svg" alt="Onda horizontal" />
+            <span>Horizontal</span>
+          </label>
+          <label class="check onda-item">
+            <input type="radio" name="sentido" value="V" />
+            <img class="onda-icon" src="convertidos/info/onda_v.svg" alt="Onda vertical" />
+            <span>Vertical</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="fieldset">
+        <label class="fieldset-label">Informações</label>
+        <label class="check"><input id="cbFile" type="checkbox" checked /> Nome do arquivo</label>
+        <label class="check"><input id="cbArt" type="checkbox" /> Nome da artboard</label>
+        <label class="check"><input id="cbSize" type="checkbox" /> Tamanho do artboard</label>
+        <label class="check"><input id="cbICC" type="checkbox" /> Perfil ICC</label>
+        <label class="check"><input id="cbDate" type="checkbox" /> Data e hora</label>
+        <label class="check"><input id="cbManual" type="checkbox" /> Texto manual</label>
+        <input id="edManual" class="input" type="text" value="" disabled />
+      </div>
+
+      <div class="fieldset">
+        <label class="check"><input id="todosArtboards" type="checkbox" /> Aplicar em todas as pranchetas</label>
+      </div>
+    </main>
+
+    <footer id="status" class="status">
+      <span id="statusText">Pronto.</span>
+    </footer>
+
+    <div class="actions">
+      <button id="btnExecutar" class="button primary">Executar</button>
+    </div>
+  </div>
+
+  <script src="../../js/CSInterface.js"></script>
+  <script src="js/info.js"></script>
+</body>
+</html>

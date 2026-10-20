@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtensionManifest Version="5.0"
+                   ExtensionBundleId="com.mazurky.tools"
+                   ExtensionBundleVersion="0.5.1"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Author><![CDATA[Mazurky]]></Author>
+    <Abstract><![CDATA[Ferramentas Mazurky para Illustrator]]></Abstract>
+    <ExtensionList>
+        <Extension Id="com.mazurky.tools.panel" Version="0.5.1" />
+    </ExtensionList>
+    <ExecutionEnvironment>
+        <HostList>
+            <Host Name="ILST" Version="[29.0,99.9]"/>
+        </HostList>
+        <LocaleList>
+            <Locale Code="All" />
+        </LocaleList>
+        <RequiredRuntimeList>
+            <RequiredRuntime Name="CSXS" Version="5.0" />
+        </RequiredRuntimeList>
+    </ExecutionEnvironment>
+    <DispatchInfoList>
+        <Extension Id="com.mazurky.tools.panel">
+            <DispatchInfo>
+                <Resources>
+                    <MainPath>./index.html</MainPath>
+                    <ScriptPath>./jsx/host.jsx</ScriptPath>
+                    <CEFCommandLine>
+                        <Parameter>--disable-http-cache</Parameter>
+                        <Parameter>--disable-application-cache</Parameter>
+                    </CEFCommandLine>
+                </Resources>
+                <Lifecycle>
+                    <AutoVisible>true</AutoVisible>
+                </Lifecycle>
+                <UI>
+                    <Type>Panel</Type>
+                    <Menu>Mazurky Tools</Menu>
+                    <Geometry>
+                        <Size>
+                            <Height>600</Height>
+                            <Width>640</Width>
+                        </Size>
+                    </Geometry>
+                    <Icons>
+                        <Icon Type="Normal">./icons/icon-48.png</Icon>
+                        <Icon Type="RollOver">./icons/icon-48.png</Icon>
+                    </Icons>
+                </UI>
+            </DispatchInfo>
+        </Extension>
+    </DispatchInfoList>
+</ExtensionManifest>

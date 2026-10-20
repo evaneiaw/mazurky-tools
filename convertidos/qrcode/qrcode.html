@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>QR Code Vetor</title>
+  <link rel="stylesheet" href="css/qrcode.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <h1 class="title">QR Code Vetor</h1>
+      <button id="btnFechar" class="btn-close" title="Fechar">×</button>
+    </header>
+
+    <main class="content">
+      <div id="preview" class="preview hidden">
+        <img id="previewImg" alt="Pré-visualização" />
+        <span id="previewInfo" class="muted"></span>
+      </div>
+
+      <div class="fieldset">
+        <label class="fieldset-label">Imagem do QR Code (dentro do Illustrator)</label>
+        <div class="row">
+          <button id="btnDetectar" class="button">Detectar QR da seleção</button>
+        </div>
+        <span class="muted">Selecione a imagem (placa/raster) dentro do documento Illustrator e clique em "Detectar QR da seleção".</span>
+        <label class="check"><input id="chkDesenharGrid" type="checkbox" checked /> Mostrar grade detectada na prévia</label>
+      </div>
+
+      <div class="fieldset">
+        <label class="fieldset-label">Opções do vetor</label>
+        <div class="row">
+          <div class="field">
+            <span>Cor do QR</span>
+            <select id="selectCor" class="input">
+              <option value="#000000" selected>Preto</option>
+              <option value="#d7373f">Vermelho</option>
+              <option value="#1473e6">Azul</option>
+              <option value="#12805c">Verde</option>
+            </select>
+          </div>
+        </div>
+        <span class="muted">O vetor é desenhado por cima da imagem, na mesma posição e tamanho do QR detectado (a imagem não é apagada).</span>
+      </div>
+    </main>
+
+    <footer id="status" class="status">
+      <span id="statusText">Pronto.</span>
+    </footer>
+
+    <div class="actions">
+      <button id="btnExecutar" class="button primary">Executar</button>
+    </div>
+  </div>
+
+  <script src="../../js/CSInterface.js"></script>
+  <script src="js/qrcode.js"></script>
+</body>
+</html>

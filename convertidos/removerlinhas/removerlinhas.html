@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Remover Linhas Sobrepostas</title>
+  <link rel="stylesheet" href="css/removerlinhas.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <h1 class="title">Remover Linhas Sobrepostas</h1>
+      <button id="btnFechar" class="btn-close" title="Fechar">×</button>
+    </header>
+
+    <main id="content" class="content">
+      <p class="card-text">Detecta caminhos duplicados e segmentos sobrepostos nas camadas desbloqueadas e visíveis do documento ativo. Ao clicar em Executar, abre um preview do desenho com as duplicadas em magenta e o restante em cinza.</p>
+    </main>
+
+    <div id="previewView" class="preview-view" style="display:none">
+      <div class="preview-toolbar">
+        <span id="previewInfo" class="preview-info"></span>
+        <button id="btnAtualizar" class="button">Atualizar</button>
+        <button id="btnRemover" class="button primary">Remover Duplicadas</button>
+        <button id="btnFecharPreview" class="button">Fechar</button>
+      </div>
+      <div class="preview-wrap">
+        <canvas id="previewCanvas"></canvas>
+      </div>
+    </div>
+
+    <footer id="status" class="status">
+      <span id="statusText">Pronto.</span>
+    </footer>
+
+    <div id="actions" class="actions">
+      <button id="btnExecutar" class="button primary">Executar</button>
+    </div>
+  </div>
+
+  <script src="../../js/CSInterface.js"></script>
+  <script src="js/removerlinhas.js"></script>
+</body>
+</html>

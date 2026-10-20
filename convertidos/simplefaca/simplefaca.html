@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>FACA ARD</title>
+  <link rel="stylesheet" href="css/simplefaca.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <h1 class="title">FACA ARD</h1>
+      <button id="btnFechar" class="btn-close" title="Fechar">×</button>
+    </header>
+
+    <main class="content">
+      <div class="card-text">"Colar mantendo camadas" é desativado automaticamente ao executar.</div>
+
+      <div class="fieldset">
+        <label class="check"><input id="ajustar" type="checkbox" checked /> Ajustar Artboard</label>
+        <label class="check"><input id="agruparCotas" type="checkbox" checked /> Agrupar Cotas</label>
+        <label class="check"><input id="agruparFaca" type="checkbox" checked /> Agrupar Faca</label>
+        <label class="check"><input id="copiar" type="checkbox" checked /> Copiar Cotas+Faca</label>
+      </div>
+
+      <div class="fieldset">
+        <button id="btnToggle" class="button">Desmarcar Todas</button>
+      </div>
+    </main>
+
+    <footer id="status" class="status">
+      <span id="statusText">Pronto.</span>
+    </footer>
+
+    <div class="actions">
+      <button id="btnExecutar" class="button primary">Executar</button>
+    </div>
+  </div>
+
+  <script src="../../js/CSInterface.js"></script>
+  <script src="js/simplefaca.js"></script>
+</body>
+</html>

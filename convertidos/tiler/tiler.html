@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Tiler</title>
+  <link rel="stylesheet" href="css/tiler.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <h1 class="title">Tiler</h1>
+      <button id="btnFechar" class="btn-close" title="Fechar">×</button>
+    </header>
+
+    <main class="content">
+      <p class="card-text">Selecione os objetos antes de executar.</p>
+
+      <div class="fieldset">
+        <label class="fieldset-label">Tamanho do Tile (mm)</label>
+        <div class="row">
+          <div class="field"><span>Largura</span><input id="larguraTile" class="input" type="number" step="any" value="100" /></div>
+          <div class="field"><span>Altura</span><input id="alturaTile" class="input" type="number" step="any" value="100" /></div>
+        </div>
+      </div>
+
+      <div class="fieldset">
+        <label class="fieldset-label">Espaçamento (mm)</label>
+        <div class="row">
+          <div class="field"><span>Horizontal</span><input id="espacamentoX" class="input" type="number" step="any" value="10" /></div>
+          <div class="field"><span>Vertical</span><input id="espacamentoY" class="input" type="number" step="any" value="10" /></div>
+        </div>
+      </div>
+
+      <div class="fieldset">
+        <label class="fieldset-label">Quantidade de Tiles</label>
+        <div class="row">
+          <div class="field"><span>Colunas</span><input id="numColunas" class="input" type="number" step="any" value="5" /></div>
+          <div class="field"><span>Linhas</span><input id="numLinhas" class="input" type="number" step="any" value="3" /></div>
+        </div>
+      </div>
+    </main>
+
+    <footer id="status" class="status">
+      <span id="statusText">Pronto.</span>
+    </footer>
+
+    <div class="actions">
+      <button id="btnExecutar" class="button primary">Executar</button>
+    </div>
+  </div>
+
+  <script src="../../js/CSInterface.js"></script>
+  <script src="js/tiler.js"></script>
+</body>
+</html>
