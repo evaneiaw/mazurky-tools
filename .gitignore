@@ -30,3 +30,6 @@ cep_cache/
 
 # Extension runtime cache (not source)
 *.cfg.bak
+
+# Configs gravados pelo ExtendScript em tempo de execução (salvarConfig)
+*.cfg
