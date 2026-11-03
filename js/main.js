@@ -3,7 +3,7 @@
 // evitando múltiplas entradas no menu Window > Extensions.
 
 var MAZURKY_TOOLS = {
-  caixamaletaft: { dir: "caixa-maleta-ft", nome: "Caixa Maleta", version: "1.1.4" },
+  caixamaletaft: { dir: "caixa-maleta-ft", nome: "Caixa Maleta", version: "1.1.6" },
   gerarLayoutft: { dir: "gerarLayout-ft", nome: "Gerar Layout", version: "1.0.4" },
   centerline: { dir: "centerline", nome: "Centerline", version: "1.0.0" },
   mira: { dir: "mira", nome: "Mira", version: "1.0.0" },
@@ -71,7 +71,7 @@ function gridHTML() {
     '<header class="header">' +
     '<h1 class="title">Mazurky Tools</h1>' +
     '<button id="btnAbrirLog" class="log-btn" title="Abrir o log de erros">Log</button>' +
-    '<span class="badge">v0.5.1</span>' +
+    '<span class="badge">v0.5.3</span>' +
     "</header>" +
     '<main id="content" class="content">' +
     '<section class="card">' +

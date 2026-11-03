@@ -181,7 +181,8 @@ function caixaMaleta(coluna1, coluna2, coluna3, coluna4, abaCola,
                      linha1, linha2, linha3,
                      offset, espessura, tamanhoTexto, distanciaTexto, extensaoTotal,
                      cotas, orelhaComprimento, retanguloInvisivel, mostrarMm, meiaCaixa,
-                     slotter) {
+                     slotter, ladoAba) {
+    if (ladoAba === undefined || ladoAba === null) ladoAba = orelhaComprimento;
     var MM_PARA_PT = 2.83464567;
     var ANGULO_INCLINACAO = 15 * Math.PI / 180;
 
@@ -213,6 +214,7 @@ function caixaMaleta(coluna1, coluna2, coluna3, coluna4, abaCola,
             configsCotas: configsCotas,
             cotas: cotas,
             orelhaComprimento: orelhaComprimento,
+            ladoAba: ladoAba,
             retanguloInvisivel: retanguloInvisivel,
             mostrarMm: mostrarMm,
             meiaCaixa: meiaCaixa,
@@ -462,7 +464,7 @@ function caixaMaleta(coluna1, coluna2, coluna3, coluna4, abaCola,
             }
         }
 
-        function criarRetanguloDesconectado(x, y, largura, altura, sE, sD, isLinha2, isLinha1, isLinha3, criarLinhasHorizontais, orelhaComprimento, col, drawLeft, drawRight, lin, valores) {
+        function criarRetanguloDesconectado(x, y, largura, altura, sE, sD, isLinha2, isLinha1, isLinha3, criarLinhasHorizontais, ladoAba, col, drawLeft, drawRight, lin, valores) {
             var linhas = {};
             var offsetX = 0;
             var larguraAjustada = largura;
@@ -488,7 +490,7 @@ function caixaMaleta(coluna1, coluna2, coluna3, coluna4, abaCola,
                 linhas.linhaInferior = criarLinha([[xAjustado, y - altura], [xAjustado + larguraAjustada, y - altura]], camadaFaca, corCut);
             }
             var usarCreaseEsquerda, usarCreaseDireita;
-            if (orelhaComprimento) {
+            if (ladoAba) {
                 usarCreaseEsquerda = isLinha2;
                 usarCreaseDireita = isLinha2 && !(col === lastCol);
             } else {
@@ -544,14 +546,14 @@ function caixaMaleta(coluna1, coluna2, coluna3, coluna4, abaCola,
             criarLinha([[x, y], [x, y - altura]], camadaFaca, corCrease);
         }
 
-        function criarOuAjustarArtboard(valores, orelhaComprimento, mostrarMm, meiaCaixa) {
+        function criarOuAjustarArtboard(valores, ladoAba, mostrarMm, meiaCaixa) {
             var larguraConteudo;
             if (meiaCaixa) {
                 larguraConteudo = valores.larguras.coluna3 + valores.larguras.coluna4;
             } else {
                 larguraConteudo = valores.larguras.coluna1 + valores.larguras.coluna2 + valores.larguras.coluna3 + valores.larguras.coluna4;
             }
-            if (!orelhaComprimento) {
+            if (!ladoAba) {
                 larguraConteudo += valores.larguras.abaCola;
             }
             var alturaConteudo = valores.alturas.linha1 + valores.alturas.linha2 + valores.alturas.linha3;
@@ -564,7 +566,7 @@ function caixaMaleta(coluna1, coluna2, coluna3, coluna4, abaCola,
                 var saltoLado = cfg.offset + Math.max(extensao, cfg.distanciaTexto + cfg.tamanhoTexto);
                 saltoTopo = saltoLado;
                 saltoBase = extensao;
-                if (orelhaComprimento) {
+                if (ladoAba) {
                     saltoEsquerda = BORDA_ABA;
                     saltoDireita = saltoLado;
                 } else {
@@ -596,13 +598,13 @@ function caixaMaleta(coluna1, coluna2, coluna3, coluna4, abaCola,
             return { xStartConteudo: novaLeft + margemEsquerda, yStartConteudo: novaTop - margemTopo };
         }
 
-        var conteudoPos = criarOuAjustarArtboard(valores, orelhaComprimento, mostrarMm, meiaCaixa);
+        var conteudoPos = criarOuAjustarArtboard(valores, ladoAba, mostrarMm, meiaCaixa);
         var xStartConteudo = conteudoPos.xStartConteudo;
         var yStartConteudo = conteudoPos.yStartConteudo;
         var posX = [];
         var posY = [yStartConteudo, yStartConteudo - alturas.linha1, yStartConteudo - alturas.linha1 - alturas.linha2, yStartConteudo - alturas.linha1 - alturas.linha2 - alturas.linha3];
 
-        if (!orelhaComprimento) {
+        if (!ladoAba) {
             if (meiaCaixa) {
                 posX = [ xStartConteudo, xStartConteudo + larguras.coluna3, xStartConteudo + larguras.coluna3 + larguras.coluna4 ];
             } else {
@@ -650,7 +652,7 @@ function caixaMaleta(coluna1, coluna2, coluna3, coluna4, abaCola,
                         var hasSlotter = slotterEsquerda > 0;
                         var drawLeft = col === 0;
                         var drawRight = (isLinha1Ou3 || (lin === 1 ? col === 0 : !(col === 1 && larguras.abaCola > 0))) && !(isLinha1Ou3 && hasSlotter && col < 1) || (isLinha1Ou3 && !hasSlotter && col === 1);
-                        criarRetanguloDesconectado(x, posY[lin], largura, altura, slotterEsquerda, slotterDireita, lin === 1, lin === 0, lin === 2, false, orelhaComprimento, col, drawLeft, drawRight, lin, valores);
+                        criarRetanguloDesconectado(x, posY[lin], largura, altura, slotterEsquerda, slotterDireita, lin === 1, lin === 0, lin === 2, false, ladoAba, col, drawLeft, drawRight, lin, valores);
                         if ((lin === 0 || lin === 2) && slotterEsquerda > 0 && col < 1) {
                             criarSlotterEntreColunas(posX[col + 1], posY[lin], altura, slotterEsquerda, lin === 0, lin === 2);
                         }
@@ -667,7 +669,7 @@ function caixaMaleta(coluna1, coluna2, coluna3, coluna4, abaCola,
                         var hasSlotter = slotterEsquerda > 0;
                         var drawLeft = col === 0 || (isLinha1Ou3 && !hasSlotter && col === 0);
                         var drawRight = (!(col === lastCol && lin === 1) && !(isLinha1Ou3 && hasSlotter && col < lastCol)) || (isLinha1Ou3 && !hasSlotter && col === lastCol);
-                        criarRetanguloDesconectado(x, posY[lin], largura, altura, slotterEsquerda, slotterDireita, lin === 1, lin === 0, lin === 2, false, orelhaComprimento, col, drawLeft, drawRight, lin, valores);
+                        criarRetanguloDesconectado(x, posY[lin], largura, altura, slotterEsquerda, slotterDireita, lin === 1, lin === 0, lin === 2, false, ladoAba, col, drawLeft, drawRight, lin, valores);
                         if ((lin === 0 || lin === 2) && slotterEsquerda > 0 && col < 3) {
                             criarSlotterEntreColunas(posX[col + 1], posY[lin], altura, slotterEsquerda, lin === 0, lin === 2);
                         }
@@ -730,7 +732,7 @@ function caixaMaleta(coluna1, coluna2, coluna3, coluna4, abaCola,
                         criarCotaHorizontal(posX[col], posY[0], larguras["coluna" + (col + 1)], larguras["coluna" + (col + 1)] / MM_PARA_PT, configsCotas, retanguloInvisivel, undefined, undefined, mostrarMm);
                     }
                 }
-                var xCotaVertical = (orelhaComprimento && !meiaCaixa) ? posX[4] : posX[posX.length - 1];
+                var xCotaVertical = (ladoAba && !meiaCaixa) ? posX[4] : posX[posX.length - 1];
                 var ladoCotaVertical = "direita";
                 for (var i = 0; i < 3; i++) {
                     criarCotaVertical(xCotaVertical, posY[i], alturas["linha" + (i + 1)], alturas["linha" + (i + 1)] / MM_PARA_PT, configsCotas, ladoCotaVertical, retanguloInvisivel, mostrarMm);
@@ -747,7 +749,7 @@ function caixaMaleta(coluna1, coluna2, coluna3, coluna4, abaCola,
                         var hasSlotter = slotterEsquerda > 0;
                         var drawLeft = (lin === 1) ? false : (col === 0);
                         var drawRight = lin === 1 || !(isLinha1Ou3 && hasSlotter && col < 1) || (isLinha1Ou3 && !hasSlotter && col === 1);
-                        criarRetanguloDesconectado(x, posY[lin], largura, altura, slotterEsquerda, slotterDireita, lin === 1, lin === 0, lin === 2, false, orelhaComprimento, col, drawLeft, drawRight, lin, valores);
+                        criarRetanguloDesconectado(x, posY[lin], largura, altura, slotterEsquerda, slotterDireita, lin === 1, lin === 0, lin === 2, false, ladoAba, col, drawLeft, drawRight, lin, valores);
                         if ((lin === 0 || lin === 2) && slotterEsquerda > 0 && col < 1) {
                             criarSlotterEntreColunas(posX[col + 1], posY[lin], altura, slotterEsquerda, lin === 0, lin === 2);
                         }
@@ -764,7 +766,7 @@ function caixaMaleta(coluna1, coluna2, coluna3, coluna4, abaCola,
                         var hasSlotter = slotterEsquerda > 0;
                         var drawLeft = (lin === 1) ? false : (col === 0);
                         var drawRight = !(isLinha1Ou3 && hasSlotter && col < lastCol) || (isLinha1Ou3 && !hasSlotter && col === lastCol);
-                        criarRetanguloDesconectado(x, posY[lin], largura, altura, slotterEsquerda, slotterDireita, lin === 1, lin === 0, lin === 2, false, orelhaComprimento, col, drawLeft, drawRight, lin, valores);
+                        criarRetanguloDesconectado(x, posY[lin], largura, altura, slotterEsquerda, slotterDireita, lin === 1, lin === 0, lin === 2, false, ladoAba, col, drawLeft, drawRight, lin, valores);
                         if ((lin === 0 || lin === 2) && slotterEsquerda > 0 && col < 3) {
                             criarSlotterEntreColunas(posX[col + 1], posY[lin], altura, slotterEsquerda, lin === 0, lin === 2);
                         }

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExtensionManifest Version="5.0"
                    ExtensionBundleId="com.mazurky.tools"
-                   ExtensionBundleVersion="0.5.1"
+                   ExtensionBundleVersion="0.5.3"
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <Author><![CDATA[Mazurky]]></Author>
     <Abstract><![CDATA[Ferramentas Mazurky para Illustrator]]></Abstract>
     <ExtensionList>
-        <Extension Id="com.mazurky.tools.panel" Version="0.5.1" />
+        <Extension Id="com.mazurky.tools.panel" Version="0.5.3" />
     </ExtensionList>
     <ExecutionEnvironment>
         <HostList>

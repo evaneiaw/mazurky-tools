@@ -18,6 +18,8 @@ let refAtual = null;
 let ftAtual = "";
 let itemAtual = 0;
 let vincosPorItem = {};
+let ladoVinco = null;
+let ladoManual = false;
 
 function setStatus(message, type) {
   statusText.className = "status-text" + (type ? " " + type : "");
@@ -64,6 +66,16 @@ function atualizarUI() {
   inputColuna2.disabled = meia;
 }
 
+// Lado em que a aba de cola deve ser desenhada: `true` = esquerda.
+// O checkbox "Orelha no Comprimento" e marcado pelo nome do modelo, mas o
+// desenho segue o lado real da aba no vinco da OF. Se o usuario mexer no
+// checkbox depois da FT, o que ele marcou manda.
+function ladoAbaEfetivo() {
+  if (ladoManual) return getBool("orelhaComprimento");
+  if (ladoVinco !== null) return ladoVinco;
+  return getBool("orelhaComprimento");
+}
+
 function coletarArgs() {
   return [
     getNumber("coluna1"),
@@ -85,6 +97,7 @@ function coletarArgs() {
     getBool("mostrarMm"),
     getBool("meiaCaixa"),
     getNumber("slotter"),
+    ladoAbaEfetivo(),
   ];
 }
 
@@ -431,10 +444,28 @@ function renderItemRadios() {
   });
 }
 
+// Posicao da aba dentro do VINCOS_COMP (5 valores). O nome do modelo NAO
+// decide: "CAIXA NORMAL ORELHA COMPRIMENTO" aparece com a aba no inicio
+// (maioria) e tambem no fim (ex.: FT 208402). A medida da ORELHA diz onde
+// ela esta no vinco; sem ORELHA, compara a estrutura [M1, M2, M1, M2] das
+// colunas nas duas hipoteses. `true` = aba primeiro (desenhada a esquerda).
+function abaEstaPrimeiro(cols, orelha, m1, m2) {
+  const dFirst = Math.abs(cols[0] - orelha);
+  const dLast = Math.abs(cols[4] - orelha);
+  if (orelha > 0 && dFirst !== dLast) return dFirst < dLast;
+  const errA = Math.abs(cols[1] - m1) + Math.abs(cols[2] - m2) +
+               Math.abs(cols[3] - m1) + Math.abs(cols[4] - m2);
+  const errB = Math.abs(cols[0] - m1) + Math.abs(cols[1] - m2) +
+               Math.abs(cols[2] - m1) + Math.abs(cols[3] - m2);
+  return errA < errB;
+}
+
 function aplicarItem(idx, salvar, acao) {
   if (!ctxItens || !ctxItens.length) return;
   if (idx < 0 || idx >= ctxItens.length) idx = 0;
   itemAtual = idx;
+  if (acao !== "vincos") ladoManual = false;
+  ladoVinco = null;
   if (btnRefazer) btnRefazer.disabled = false;
   const escolhido = ctxItens[idx];
   const it = escolhido.it || {};
@@ -442,19 +473,27 @@ function aplicarItem(idx, salvar, acao) {
   if (it.ONDA === undefined || it.ONDA === null) it.ONDA = ci.ONDA;
   const r = aplicarMaleta(it, ci);
   const nomeModelo = String(ci.NOMECAIXA || it.NOMECAIXA || "");
-  const orelhaComprimento = /ORELHA\s*COMPRIMENTO/i.test(nomeModelo);
+  const orelhaComprimentoModelo = /ORELHA\s*COMPRIMENTO/i.test(nomeModelo);
   setBool("meiaCaixa", r.meia);
-  setBool("orelhaComprimento", orelhaComprimento);
+  if (!ladoManual) setBool("orelhaComprimento", orelhaComprimentoModelo);
   atualizarUI();
 
   // Medidas exatas do vinco (Vincadeira/Impressora) quando a OF da FT ja foi
   // buscada: a OF manda, a tabela FOLGAS_ONDA fica como fallback/estimativa.
   // Impressora = colunas (5 valores) e Vincadeira = linhas (3 valores).
-  // Com "orelha no comprimento" a aba vem primeiro na lista de colunas.
+  // Os 5 valores do VINCOS_COMP sao c1, c2, c3, c4 e a ABA, mas a aba pode vir
+  // no inicio OU no fim (o nome do modelo nao garante a ordem): a posicao e
+  // detectada pela medida da ORELHA. A posicao define o lado do DESENHO
+  // (ladoVinco); o checkbox "Orelha no Comprimento" continua vindo do nome do
+  // modelo e so e sobrescrito se o usuario clicar nele.
   let origemVinco = "";
   const vv = vincosPorItem[String(escolhido.item)];
   if (vv && !r.meia && vv.cols.length === 5 && vv.lins.length === 3) {
-    const vals = orelhaComprimento
+    const M1v = numero(primeiro(it.M1, ci.M1));
+    const M2v = numero(primeiro(it.M2, ci.M2));
+    const orelhaV = numero(primeiro(it.ORELHA, ci.ORELHA));
+    const abaPrimeiro = abaEstaPrimeiro(vv.cols, orelhaV, M1v, M2v);
+    const vals = abaPrimeiro
       ? { aba: vv.cols[0], c1: vv.cols[1], c2: vv.cols[2], c3: vv.cols[3], c4: vv.cols[4] }
       : { c1: vv.cols[0], c2: vv.cols[1], c3: vv.cols[2], c4: vv.cols[3], aba: vv.cols[4] };
     setNumber("coluna1", vals.c1);
@@ -465,6 +504,8 @@ function aplicarItem(idx, salvar, acao) {
     setNumber("linha1", vv.lins[0]);
     setNumber("linha2", vv.lins[1]);
     setNumber("linha3", vv.lins[2]);
+    ladoVinco = abaPrimeiro;
+    atualizarUI();
     r.somaC = vals.c1 + vals.c2 + vals.c3 + vals.c4 + vals.aba;
     r.somaL = vv.lins[0] + vv.lins[1] + vv.lins[2];
     origemVinco = "vinco da OF " + (window.MazurkyFTAPI && window.MazurkyFTAPI.formatarOF
@@ -583,6 +624,8 @@ function buscarFT() {
       refAtual = (dados.ref && dados.ref[0]) || {};
       ftAtual = ft;
       vincosPorItem = {};
+      ladoVinco = null;
+      ladoManual = false;
       ctxItens = montarItens(dados, ciResp);
       if (!ctxItens.length) ctxItens = [{ item: 1, chave: "", rotulo: "Item 1", it: {}, ci: {} }];
       renderItemRadios();
@@ -616,6 +659,9 @@ btnFechar.addEventListener("click", fechar);
 btnBuscarFT.addEventListener("click", buscarFT);
 btnRefazer.addEventListener("click", refazerMedidas);
 inputMeiaCaixa.addEventListener("change", atualizarUI);
+document.getElementById("orelhaComprimento").addEventListener("change", function () {
+  ladoManual = true;
+});
 
 const CAMPO_IDS = [
   "coluna1",
