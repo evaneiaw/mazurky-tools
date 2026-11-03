@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Frente e Verso</title>
+</head>
+<body>
+  <div id="app">
+    <main id="content" class="content">
+      <div class="fv-section">
+        <span class="fv-label">Nomenclatura das pranchetas</span>
+        <div class="fv-options">
+          <label class="fv-radio">
+            <input type="radio" name="nomenclatura" value="frenteverso" checked />
+            <span>Frente / Verso</span>
+          </label>
+          <label class="fv-radio">
+            <input type="radio" name="nomenclatura" value="externointerno" />
+            <span>Externo / Interno</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="fv-section">
+        <span class="fv-label">Distância entre as pranchetas</span>
+        <div class="fv-field">
+          <span>Distância (mm)</span>
+          <input id="distancia" class="fv-input" type="number" step="any" min="0" value="10" />
+        </div>
+      </div>
+
+      <div class="fv-section">
+        <span class="fv-label">Referência do espelhamento</span>
+        <div class="fv-options">
+          <label class="fv-radio">
+            <input type="radio" name="referencia" value="miras" checked />
+            <span>MIRAS</span>
+          </label>
+          <label class="fv-radio">
+            <input type="radio" name="referencia" value="faca" />
+            <span>FACA</span>
+          </label>
+        </div>
+        <p class="fv-hint">
+          O eixo é o centro do retângulo delimitador da camada escolhida na prancheta ativa.
+        </p>
+      </div>
+    </main>
+
+    <footer class="actions">
+      <button id="btnGerar" class="button primary">GERAR</button>
+      <button id="btnFechar" class="button">Fechar</button>
+      <span id="statusText" class="status-text">Aguardando...</span>
+    </footer>
+  </div>
+</body>
+</html>

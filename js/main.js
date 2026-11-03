@@ -10,7 +10,7 @@ var MAZURKY_TOOLS = {
   info: { dir: "info", nome: "Info", version: "1.0.0" },
   lote: { dir: "lote", nome: "Lote Mazurky", version: "1.1.1" },
   simplefaca: { dir: "simplefaca", nome: "FACA ARD (→) VETOR", version: "1.0.1" },
-  frenteverso: { dir: "frenteverso", nome: "Frente e Verso", version: "1.0.0" },
+  frenteverso: { dir: "frenteverso", nome: "Frente e Verso", version: "1.1.0" },
   salvarpdf: { dir: "salvarpdf", nome: "Salvar PDF", version: "1.1.1" },
   cotas: { dir: "cotas", nome: "Cotas", version: "1.0.0" },
   resolucao: { dir: "resolucao", nome: "Diminuir Resolução", version: "1.0.0" },
@@ -71,7 +71,7 @@ function gridHTML() {
     '<header class="header">' +
     '<h1 class="title">Mazurky Tools</h1>' +
     '<button id="btnAbrirLog" class="log-btn" title="Abrir o log de erros">Log</button>' +
-    '<span class="badge">v0.5.3</span>' +
+    '<span class="badge">v0.5.4</span>' +
     "</header>" +
     '<main id="content" class="content">' +
     '<section class="card">' +

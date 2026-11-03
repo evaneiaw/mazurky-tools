@@ -1,0 +1,109 @@
+#app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px;
+}
+
+.fv-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+.fv-section:last-child {
+  margin-bottom: 0;
+}
+
+.fv-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #2c2c2c;
+}
+
+.fv-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+}
+
+.fv-radio {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #2c2c2c;
+  cursor: pointer;
+}
+
+.fv-radio input {
+  margin: 0;
+}
+
+.fv-field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-start;
+}
+
+.fv-field > span {
+  font-size: 10px;
+  color: #4a4a4a;
+  white-space: nowrap;
+}
+
+.fv-input {
+  width: 72px;
+  height: 22px;
+  border: 1px solid #a8a8a8;
+  border-radius: 0;
+  padding: 0 4px;
+  font-size: 12px;
+  font-family: inherit;
+  color: #2c2c2c;
+  background: #ffffff;
+}
+
+.fv-input:focus {
+  outline: 1px solid #1a73e8;
+  outline-offset: -1px;
+}
+
+.fv-hint {
+  margin: 0;
+  font-size: 10px;
+  line-height: 1.4;
+  color: #707070;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-top: 1px solid #d9d9d9;
+  background: #f7f7f7;
+}
+
+.status-text {
+  flex: 1;
+  text-align: right;
+  font-size: 11px;
+  color: #707070;
+}
+
+.status-text.ok {
+  color: #12805c;
+}
+
+.status-text.err {
+  color: #d7373f;
+}
