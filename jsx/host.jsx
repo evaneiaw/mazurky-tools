@@ -27,8 +27,7 @@ var MAZURKY_TOOLS = {
     barcode: "barcode",
     gerarLayout: "gerarLayout",
     caixamaletaft: "caixa-maleta-ft",
-    gerarLayoutft: "gerarLayout-ft",
-    faca3d: "faca3d"
+    gerarLayoutft: "gerarLayout-ft"
 };
 
 var __mazurkyTool = "";
@@ -200,7 +199,6 @@ function instalarWrappers() {
     gerarCodigoBarras = function () { return chamar("gerarCodigoBarras", arguments); };
     exportarImagemParaDetectar = function () { return chamar("exportarImagemParaDetectar", arguments); };
     analisarDuplicadas = function () { return chamar("analisarDuplicadas", arguments); };
-    faca3dDiagnostico = function () { return chamar("faca3dDiagnostico", arguments); };
 }
 
 instalarWrappers();
