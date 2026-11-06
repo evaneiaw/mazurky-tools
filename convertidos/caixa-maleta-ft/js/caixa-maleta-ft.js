@@ -706,7 +706,6 @@ window.addEventListener("beforeunload", () => {
 
 function init() {
   csInterface = new CSInterface();
-  csInterface.setWindowTitle("Caixa Maleta FT - Mazurky v1.0");
   setStatus("Pronto.");
   inputFT.value = window.MazurkyFT ? window.MazurkyFT.get() : "";
   carregarPreferencias();

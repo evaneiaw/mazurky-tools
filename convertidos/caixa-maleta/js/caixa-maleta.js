@@ -443,7 +443,6 @@ window.addEventListener("beforeunload", () => {
 
 function init() {
   csInterface = new CSInterface();
-  csInterface.setWindowTitle("Caixa Maleta - Mazurky v2.0");
   try {
     const evt = new CSEvent("com.mazurky.tools.caixamaleta.opened", "APPLICATION");
     evt.data = "";

@@ -142,7 +142,6 @@ inputDistancia.addEventListener("focus", function () {
 
 function init() {
   csInterface = new CSInterface();
-  csInterface.setWindowTitle("Frente e Verso - Mazurky v1.1");
   carregarConfig();
   setStatus("Pronto.");
 }

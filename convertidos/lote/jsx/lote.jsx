@@ -9,15 +9,12 @@ function formatLote(input) {
 }
 
 function substituirTexto(doc, placeholder, novoTexto) {
+    var regexStr = placeholder.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    var regex = new RegExp(regexStr, "gi");
     for (var i = 0; i < doc.textFrames.length; i++) {
         var tf = doc.textFrames[i];
         try {
-            var lower = tf.contents.toLowerCase();
-            if (lower.indexOf(placeholder.toLowerCase()) !== -1) {
-                tf.contents = tf.contents.split(placeholder).join(novoTexto);
-                tf.contents = tf.contents.split(placeholder.toLowerCase()).join(novoTexto);
-                tf.contents = tf.contents.split(placeholder.toUpperCase()).join(novoTexto);
-            }
+            tf.contents = tf.contents.replace(regex, novoTexto);
         } catch (e) {}
     }
 }

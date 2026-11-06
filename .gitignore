@@ -33,3 +33,14 @@ cep_cache/
 
 # Configs gravados pelo ExtendScript em tempo de execução (salvarConfig)
 *.cfg
+# Artefatos de teste/despejo na raiz (nao fazem parte da extensao)
+/articul.txt
+/check_ativo.js
+/debug_insp.js
+/estrutural.txt
+/geometria.txt
+/minimal.js
+/painel.txt
+/selecao.txt
+/selecao_detail.txt
+/testes_artes.txt

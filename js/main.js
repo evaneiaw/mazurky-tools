@@ -20,9 +20,7 @@ var MAZURKY_TOOLS = {
   tamanhoartboard: { dir: "tamanhoartboard", nome: "Igualar Tamanho Artboards", version: "1.0.0" },
   tracejarpicote: { dir: "tracejarpicote", nome: "Tracejar (Picote)", version: "1.0.0" },
   qrcode: { dir: "qrcode", nome: "QR Code Vetor", version: "1.0.0" },
-  barcode: { dir: "barcode", nome: "Código de Barras", version: "1.0.0" },
-  caixamaleta: { dir: "caixa-maleta", nome: "Caixa Maleta (antigo)", version: "1.0.0", semNumero: true, divisor: true },
-  gerarLayout: { dir: "gerarLayout", nome: "Gerar Layout (antigo)", version: "1.0.0", semNumero: true }
+  barcode: { dir: "barcode", nome: "Código de Barras", version: "1.0.0" }
 };
 
 var csInterface = null;
@@ -71,7 +69,7 @@ function gridHTML() {
     '<header class="header">' +
     '<h1 class="title">Mazurky Tools</h1>' +
     '<button id="btnAbrirLog" class="log-btn" title="Abrir o log de erros">Log</button>' +
-    '<span class="badge">v0.5.4</span>' +
+    '<span class="badge">v0.11.6</span>' +
     "</header>" +
     '<main id="content" class="content">' +
     '<section class="card">' +

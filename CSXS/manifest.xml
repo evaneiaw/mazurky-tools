@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExtensionManifest Version="5.0"
                    ExtensionBundleId="com.mazurky.tools"
-                   ExtensionBundleVersion="0.5.4"
+                   ExtensionBundleVersion="0.11.6"
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <Author><![CDATA[Mazurky]]></Author>
     <Abstract><![CDATA[Ferramentas Mazurky para Illustrator]]></Abstract>
     <ExtensionList>
-        <Extension Id="com.mazurky.tools.panel" Version="0.5.4" />
+        <Extension Id="com.mazurky.tools.panel" Version="0.11.6" />
+        <Extension Id="com.mazurky.tools.faca3d" Version="0.7.6" />
     </ExtensionList>
     <ExecutionEnvironment>
         <HostList>
@@ -40,6 +41,35 @@
                         <Size>
                             <Height>600</Height>
                             <Width>640</Width>
+                        </Size>
+                    </Geometry>
+                    <Icons>
+                        <Icon Type="Normal">./icons/icon-48.png</Icon>
+                        <Icon Type="RollOver">./icons/icon-48.png</Icon>
+                    </Icons>
+                </UI>
+            </DispatchInfo>
+        </Extension>
+        <Extension Id="com.mazurky.tools.faca3d">
+            <DispatchInfo>
+                <Resources>
+                    <MainPath>./convertidos/faca3d/faca3d.html</MainPath>
+                    <ScriptPath>./jsx/host.jsx</ScriptPath>
+                    <CEFCommandLine>
+                        <Parameter>--disable-http-cache</Parameter>
+                        <Parameter>--disable-application-cache</Parameter>
+                    </CEFCommandLine>
+                </Resources>
+                <Lifecycle>
+                    <AutoVisible>true</AutoVisible>
+                </Lifecycle>
+                <UI>
+                    <Type>Panel</Type>
+                    <Menu>3D Faca</Menu>
+                    <Geometry>
+                        <Size>
+                            <Height>820</Height>
+                            <Width>1100</Width>
                         </Size>
                     </Geometry>
                     <Icons>
